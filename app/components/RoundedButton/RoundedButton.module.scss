@@ -1,0 +1,30 @@
+@import "../../styles/colors";
+
+.button {
+  padding: 10px 20px;
+
+  border-radius: 200px;
+  border: $brandColor 1px solid;
+
+  color: $brandColor;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color .2s ease, color .2s ease;
+
+  &:hover {
+    background-color: $brandColor;
+    color: $backgroundColor;
+  }
+
+  &.fillButton {
+    border: none;
+    background-color: $brandColor;
+
+    color: $backgroundColor;
+
+    &:hover {
+      background-color: lighten($brandColor, 5%);
+    }
+  }
+}

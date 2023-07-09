@@ -1,0 +1,76 @@
+@import '../../styles/colors';
+
+.header {
+  padding: 15px 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  .contact {
+    display: none;
+  }
+}
+
+.rightSide {
+  display: flex;
+  gap: 15px;
+  .button {
+    display: none;
+  }
+}
+
+.logo {
+  width: 200px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .leftSide {
+    flex-direction: row;
+    gap: 30px;
+
+    .contact {
+      display: block;
+
+      font-weight: 600;
+      p {
+
+      }
+
+      a {
+        color: $brandColor;
+      }
+    }
+
+  }
+
+  .rightSide {
+    .contactButton {
+      display: none;
+    }
+
+    .button {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 960px) {
+  .leftSide {
+    gap: 50px;
+  }
+}

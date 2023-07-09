@@ -1,0 +1,49 @@
+@import "colors";
+
+@font-face {
+  font-family: 'Museo Sans Cyrl';
+  src: url("../fonts/MuseoSansCyrl-300.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Museo Sans Cyrl';
+  src: url("../fonts/MuseoSansCyrl-500.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Museo Sans Cyrl';
+  src: url("../fonts/MuseoSansCyrl-700.ttf");
+  font-weight: 700;
+}
+
+html,
+body {
+  background-color: $backgroundColor;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Museo Sans Cyrl";
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: none;
+
+  background: none;
+}
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,46 @@
+@import "../../styles/colors";
+
+.burger {
+  padding: 20px;
+
+  background-color: $brandColor;
+  border-radius: 50%;
+
+  div {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    width: 20px;
+    height: 2px;
+
+    background-color: $backgroundColor;
+    border-radius: 50%;
+
+    &::after,
+    &::before {
+      content: '';
+
+      position: absolute;
+
+      width: 20px;
+      height: 2px;
+
+      background-color: $backgroundColor;
+      border-radius: 50%;
+    }
+
+    &::after {
+      top: -4px;
+    }
+
+    &::before {
+      top: 4px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+}

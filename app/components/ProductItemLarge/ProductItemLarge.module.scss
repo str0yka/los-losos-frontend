@@ -1,0 +1,70 @@
+@import '../../styles/colors';
+
+.product {
+  box-sizing: content-box;
+
+  display: grid;
+  grid-template-columns: 130px auto;
+  gap: 8px;
+
+  padding: 8px 0;
+
+  border-bottom: $fourthColor 1px solid;
+
+  .image {
+    overflow: hidden;
+
+    background-color: $fourthColor;
+    border-radius: 15px;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .nonImage {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info {
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+
+      span {
+        font-size: 14px;
+        color: $secondColor;
+      }
+    }
+
+    .foods {
+      font-size: 14px;
+      color: $secondColor;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; // количество строк
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  .priceBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+
+    .price {
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+  }
+}
