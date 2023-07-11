@@ -1,26 +1,22 @@
 import React from "react";
 
-import CountButton from "@/app/components/CountButton/CountButton";
+import CountButton from "@/app/components/UI/CountButton/CountButton";
 import styles from "./ProductItemLarge.module.scss";
+import * as process from "process";
+import { Product } from "@/store/slices/cartSlices";
+import { API_URL } from "@/utils/consts";
 
-const ProductItemLarge = () => {
-  const { product, count } = {
-    product: {
-      id: 3,
-      title: "Пельмени",
-      img: "e911fc54-843f-4c34-87cb-2b0e58c352ea.jpg",
-      foods: "тесто, говядина, сметана",
-      price: 130,
-      weight: 220,
-      categoryId: 1,
-    },
-    count: 3,
-  };
+interface ProductItemLargerInterface {
+  product: Product;
+}
 
+const ProductItemLarge: React.FC<ProductItemLargerInterface> = ({
+  product,
+}) => {
   return (
     <article className={styles.product}>
       <div className={styles.image}>
-        <img src="" alt="" />
+        <img src={`${API_URL}/../${product.img}`} alt="" />
       </div>
       <div className={styles.nonImage}>
         <div className={styles.info}>
@@ -31,7 +27,7 @@ const ProductItemLarge = () => {
         </div>
         <div className={styles.priceBlock}>
           <span className={styles.price}>{`${product.price} руб.`}</span>
-          <CountButton count={count} />
+          <CountButton id={product.id} />
         </div>
       </div>
     </article>

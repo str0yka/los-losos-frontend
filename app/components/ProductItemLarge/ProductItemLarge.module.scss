@@ -1,8 +1,6 @@
-@import '../../styles/colors';
+@import '../../../styles/colors';
 
 .product {
-  box-sizing: content-box;
-
   display: grid;
   grid-template-columns: 130px auto;
   gap: 8px;
@@ -12,12 +10,15 @@
   border-bottom: $fourthColor 1px solid;
 
   .image {
+
     overflow: hidden;
 
     background-color: $fourthColor;
     border-radius: 15px;
 
     img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
   }
@@ -59,12 +60,57 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 5px;
 
     .price {
       flex-shrink: 0;
       font-size: 14px;
     }
 
+  }
+}
+
+@media (min-width: 768px) {
+  .product {
+    background-color: $fourthColor;
+    padding: 20px;
+    border-radius: 20px;
+    border-bottom: none;
+
+    display: flex;
+    flex-direction: column;
+    transition: all .2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 10px 35px 0px rgba(255, 255, 255, 0.05);
+    }
+
+    .image {
+      height: 170px;
+      flex-shrink: 0;
+
+      background-color: $backgroundColor;
+    }
+
+    .nonImage {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+
+      .info {
+        flex-grow: 1;
+        margin-bottom: 25px;
+
+        .title {
+          margin-bottom: 5px;
+        }
+      }
+
+      .priceBlock {
+        .price {
+          font-size: 18px;
+        }
+      }
+    }
   }
 }

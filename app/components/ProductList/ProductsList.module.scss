@@ -3,3 +3,25 @@
   grid-template-columns: 1fr;
   grid-auto-rows: 146px;
 }
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 342px;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 960px) {
+  .list {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+}

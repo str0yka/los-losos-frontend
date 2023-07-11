@@ -7,11 +7,16 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.9.5",
+    "axios": "^1.4.0",
+    "cookies-next": "^2.1.2",
+    "debug": "^4.3.4",
+    "jwt-decode": "^3.1.2",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "8.1.0",
-    "sass": "^1.63.6"
+    "sass": "^1.63.6",
+    "supports-color": "^8.1.1"
   },
   "devDependencies": {
     "@types/node": "20.3.1",

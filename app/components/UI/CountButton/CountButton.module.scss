@@ -1,4 +1,4 @@
-@import '../../../../../../3-react-projects/20-los-losos-2.0/src/styles/colors';
+@import '../../../../../../../3-react-projects/20-los-losos-2.0/src/styles/colors';
 
 .CountButton {
   position: relative;
@@ -131,5 +131,28 @@
         }
       }
     }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    animation: disabled 1s ease infinite;
+
+    div {
+      background-color: $secondColor;
+    }
+  }
+}
+
+@keyframes disabled {
+  0% {
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.75;
   }
 }
