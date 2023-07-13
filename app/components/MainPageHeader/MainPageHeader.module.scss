@@ -1,0 +1,81 @@
+@import '../../../styles/colors';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .categoryList {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .categoryItem {
+      flex-shrink: 0;
+
+      padding: 10px 15px;
+
+      border-radius: 15px;
+      background-color: $fourthColor;
+
+      cursor: pointer;
+      user-select: none;
+
+      transition: .2s ease color;
+
+      &:hover {
+        color: $brandColor;
+      }
+    }
+  }
+
+  .info {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    .categoryList {
+      gap: 20px;
+
+      .categoryItem {
+        padding: 10px 0;
+
+        background: none;
+      }
+    }
+
+    .info {
+      position: relative;
+
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      padding-left: 20px;
+
+      flex-shrink: 0;
+
+      &::before {
+        content: '';
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+
+        height: 18px;
+        width: 2px;
+
+        background-color: $brandColor;
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@ export interface Product {
   categoryId: number;
 }
 
-type ProductInCart = {
+export type ProductInCart = {
   count: number;
   product: Product;
 };
