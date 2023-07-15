@@ -1,46 +1,64 @@
 "use client";
 
-import React, { ReactDOM, useEffect, useRef } from "react";
-import { CategoryItem } from "@/app/page";
-import styles from "./MainPageHeader.module.scss";
-import RoundedButton from "@/app/components/UI/RoundedButton/RoundedButton";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import { is } from "immutable";
+import { useSession } from "next-auth/react";
+
+import { CategoryItem } from "@/app/index";
+import RoundedButton from "@/app/components/UI/RoundedButton/RoundedButton";
+
+import styles from "./MainPageHeader.module.scss";
 
 interface MainPageHeaderProps {
   categories: CategoryItem[];
 }
 
 const MainPageHeader: React.FC<MainPageHeaderProps> = ({ categories }) => {
+  const session = useSession();
+
+  if (session.data) {
+    localStorage.removeItem("CART_TOKEN");
+  }
+
   const list = useRef<null | HTMLUListElement>(null);
 
   useEffect(() => {
     let isDraggable = false;
-    let scrollStart = 0;
-    let scrollEnd = 0;
-    let percent = list.current
+    let dragStartPosition = 0;
+    let dragEndPosition = 0;
+    let percentOfScrollWidth = list.current
       ? list.current.scrollWidth / window.innerWidth
       : 1;
 
-    list.current?.addEventListener("mousedown", (event) => {
-      if (!list.current) return;
-
+    const onDragStart = (event: globalThis.MouseEvent) => {
       isDraggable = true;
-      scrollStart = event.clientX * percent;
-    });
+      dragStartPosition = event.clientX * percentOfScrollWidth;
+    };
 
-    window.addEventListener("mouseup", (event) => {
+    const onDragEnd = () => {
       if (!list.current) return;
       isDraggable = false;
-      scrollEnd = list.current?.scrollLeft;
-    });
+      dragEndPosition = list.current?.scrollLeft;
+    };
 
-    window.addEventListener("mousemove", (event) => {
+    const onDrag = (event: globalThis.MouseEvent) => {
       if (!list.current || !isDraggable) return;
 
       list.current.scrollLeft =
-        scrollEnd + scrollStart - event.clientX * percent;
-    });
+        dragEndPosition +
+        dragStartPosition -
+        event.clientX * percentOfScrollWidth;
+    };
+
+    list.current?.addEventListener("mousedown", onDragStart);
+    window.addEventListener("mouseup", onDragEnd);
+    window.addEventListener("mousemove", onDrag);
+
+    return () => {
+      list.current?.removeEventListener("mousedown", onDragStart);
+      window.removeEventListener("mouseup", onDragEnd);
+      window.removeEventListener("mousemove", onDrag);
+    };
   }, []);
 
   return (

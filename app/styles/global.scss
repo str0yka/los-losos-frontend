@@ -1,0 +1,21 @@
+@import "zero";
+
+body {
+  --primaryColor: #fada5e;
+  --primaryColorHover: #fad646;
+  --neutralColor: #ffffff;
+  --neutralColorDarken: #cccccc;
+  --secondaryColorLight: #373737;
+  --secondaryColorLighten: #171717;
+  --secondaryColor: #0e0e0e;
+
+  background-color: var(--secondaryColor);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  color: var(--neutralColor);
+}

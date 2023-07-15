@@ -1,7 +1,9 @@
 import React from "react";
+
+import { CategoryItem, Product } from "@/app/index";
 import ProductItemLarge from "@/app/components/ProductItemLarge/ProductItemLarge";
+
 import styles from "./CategoryList.module.scss";
-import { CategoryItem } from "@/app/page";
 
 interface CategoryListProps {
   category: CategoryItem;
@@ -11,11 +13,11 @@ const CategoryList: React.FC<CategoryListProps> = ({ category }) => {
   return (
     <section className={styles.category}>
       <h2 className={styles.title}>{category.title}</h2>
-      <section className={styles.list}>
-        {category.product.map((product: any) => (
+      <div className={styles.list}>
+        {category.products.map((product: Product) => (
           <ProductItemLarge key={product.id} product={product} />
         ))}
-      </section>
+      </div>
     </section>
   );
 };

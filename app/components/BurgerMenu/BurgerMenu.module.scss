@@ -1,9 +1,7 @@
-@import "../../../styles/colors";
-
 .burger {
   padding: 20px;
 
-  background-color: $brandColor;
+  background-color: var(--primaryColor);
   border-radius: 50%;
 
   div {
@@ -13,19 +11,19 @@
     width: 20px;
     height: 2px;
 
-    background-color: $backgroundColor;
+    background-color: var(--secondaryColor);
     border-radius: 50%;
 
     &::after,
     &::before {
-      content: '';
+      content: "";
 
       position: absolute;
 
       width: 20px;
       height: 2px;
 
-      background-color: $backgroundColor;
+      background-color: var(--secondaryColor);
       border-radius: 50%;
     }
 

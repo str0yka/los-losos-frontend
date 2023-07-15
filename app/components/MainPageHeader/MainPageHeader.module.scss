@@ -1,5 +1,3 @@
-@import '../../../styles/colors';
-
 .header {
   display: flex;
   align-items: center;
@@ -22,15 +20,15 @@
       padding: 10px 15px;
 
       border-radius: 15px;
-      background-color: $fourthColor;
+      background-color: var(--secondaryColorLighten);
 
       cursor: pointer;
       user-select: none;
 
-      transition: .2s ease color;
+      transition: 0.2s ease color;
 
       &:hover {
-        color: $brandColor;
+        color: var(--primaryColor);
       }
     }
   }
@@ -64,7 +62,7 @@
       flex-shrink: 0;
 
       &::before {
-        content: '';
+        content: "";
 
         position: absolute;
         top: 50%;
@@ -74,7 +72,7 @@
         height: 18px;
         width: 2px;
 
-        background-color: $brandColor;
+        background-color: var(--primaryColor);
       }
     }
   }

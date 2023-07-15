@@ -1,5 +1,3 @@
-@import '../../../styles/colors';
-
 .product {
   display: grid;
   grid-template-columns: 130px auto;
@@ -7,13 +5,12 @@
 
   padding: 8px 0;
 
-  border-bottom: $fourthColor 1px solid;
+  border-bottom: var(--secondaryColorLighten) 1px solid;
 
   .image {
-
     overflow: hidden;
 
-    background-color: $fourthColor;
+    background-color: var(--secondaryColorLighten);
     border-radius: 15px;
 
     img {
@@ -42,13 +39,13 @@
 
       span {
         font-size: 14px;
-        color: $secondColor;
+        color: var(--neutralColorDarken);
       }
     }
 
     .foods {
       font-size: 14px;
-      color: $secondColor;
+      color: var(--neutralColorDarken);
       display: -webkit-box;
       -webkit-line-clamp: 3; // количество строк
       -webkit-box-orient: vertical;
@@ -65,20 +62,19 @@
       flex-shrink: 0;
       font-size: 14px;
     }
-
   }
 }
 
 @media (min-width: 768px) {
   .product {
-    background-color: $fourthColor;
+    background-color: var(--secondaryColorLighten);
     padding: 20px;
     border-radius: 20px;
     border-bottom: none;
 
     display: flex;
     flex-direction: column;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
       transform: translateY(-5px);
@@ -89,7 +85,7 @@
       height: 170px;
       flex-shrink: 0;
 
-      background-color: $backgroundColor;
+      background-color: var(--secondaryColor);
     }
 
     .nonImage {

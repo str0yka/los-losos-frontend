@@ -1,16 +1,11 @@
 import CategoryList from "@/app/components/CategoryList/CategoryList";
 import React from "react";
 import { API_URL } from "@/utils/consts";
-import { Product } from "@/store/slices/cartSlices";
 import MainPageHeader from "@/app/components/MainPageHeader/MainPageHeader";
+import { CategoryItem } from "@/app/index";
 
 export const metadata = {
   title: "Redux Toolkit",
-};
-
-export type CategoryItem = {
-  title: string;
-  product: Product[];
 };
 
 const getCategories = async () => {

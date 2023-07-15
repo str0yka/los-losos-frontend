@@ -1,8 +1,10 @@
 import React from "react";
-import styles from "./Header.module.scss";
+import Link from "next/link";
+
 import BurgerMenu from "@/app/components/BurgerMenu/BurgerMenu";
 import RoundedButton from "@/app/components/UI/RoundedButton/RoundedButton";
-import Link from "next/link";
+
+import styles from "./Header.module.scss";
 
 const Header = () => {
   return (
@@ -18,7 +20,7 @@ const Header = () => {
       </div>
       <div className={styles.rightSide}>
         <RoundedButton className={styles.button}>профиль</RoundedButton>
-        <RoundedButton className={styles.contactButton} fillColor={true}>
+        <RoundedButton className={styles.contactButton} fillColor>
           позвони нам
         </RoundedButton>
         <BurgerMenu />

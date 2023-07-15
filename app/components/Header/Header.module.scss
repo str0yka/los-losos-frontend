@@ -1,5 +1,3 @@
-@import '../../../styles/colors';
-
 .header {
   padding: 15px 0;
   width: 100%;
@@ -48,14 +46,12 @@
 
       font-weight: 600;
       p {
-
       }
 
       a {
-        color: $brandColor;
+        color: var(--primaryColor);
       }
     }
-
   }
 
   .rightSide {

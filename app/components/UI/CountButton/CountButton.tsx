@@ -4,33 +4,41 @@ import classes from "./CountButton.module.scss";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
-import {
-  fetchAddToCart,
-  fetchDeleteFromCart,
-  Product,
-  ProductInCart,
-} from "@/store/slices/cartSlices";
+import { fetchAddToCart, fetchDeleteFromCart } from "@/store/slices/cartSlices";
+import { ProductInCart } from "@/app";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 
 interface CountButtonProps {
   id: number;
 }
 
 const CountButton: React.FC<CountButtonProps> = ({ id }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
   const productInCart: ProductInCart | undefined = useSelector(
     (state: RootState) => {
       return state.cart.data.find(({ product }) => product?.id === id);
     }
   );
+  const { data } = useSession();
   const count = productInCart?.count || 0;
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleCart = async (action: "add" | "delete") => {
     try {
       setIsLoading(true);
+
+      const options = {
+        id,
+        accessToken:
+          data?.user.accessToken ||
+          (localStorage.getItem("CART_TOKEN") as string),
+      };
+
       await dispatch(
-        action === "add" ? fetchAddToCart(id) : fetchDeleteFromCart(id)
+        action === "add"
+          ? fetchAddToCart(options)
+          : fetchDeleteFromCart(options)
       );
     } catch (err) {
       console.log(err);

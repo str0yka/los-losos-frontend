@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./RoundedButton.module.scss";
+import classes from "classnames";
 
 interface RoundedButtonInterface {
   children: JSX.Element | string;
@@ -14,13 +15,14 @@ const RoundedButton: React.FC<RoundedButtonInterface> = ({
   className,
   ...props
 }) => {
+  const classNames = classes(
+    styles.button,
+    fillColor && styles.fillButton,
+    className
+  );
+
   return (
-    <button
-      {...props}
-      className={`${styles.button} ${
-        fillColor && styles.fillButton
-      } ${className}`}
-    >
+    <button {...props} className={classNames}>
       {children}
     </button>
   );

@@ -1,11 +1,17 @@
-"use client";
+import { Metadata } from "next";
 
-import "@/styles/globals.scss";
 import Container from "@/app/components/Container/Container";
-
 import Header from "@/app/components/Header/Header";
-import { Provider } from "react-redux";
-import store from "@/store/store";
+import StoreProvider from "./components/StoreProvider/StoreProvider";
+
+import { MuseoSans } from "./fonts/fonts";
+import "@/app/styles/global.scss";
+import NextAuthProvider from "./components/NextAuthProvider/NextAuthProvider";
+
+export const metadata: Metadata = {
+  title: "Лось Лосось",
+  description: "Караоке-гастропаб",
+};
 
 interface RootLayoutInterface {
   children: JSX.Element;
@@ -13,14 +19,16 @@ interface RootLayoutInterface {
 
 const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className={MuseoSans.className}>
       <body>
-        <Provider store={store}>
-          <Container>
-            <Header />
-            {children}
-          </Container>
-        </Provider>
+        <NextAuthProvider>
+          <StoreProvider>
+            <Container>
+              <Header />
+              {children}
+            </Container>
+          </StoreProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

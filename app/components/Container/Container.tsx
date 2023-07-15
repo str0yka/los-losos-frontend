@@ -1,11 +1,14 @@
 "use client";
 
 import React, { JSX, useEffect } from "react";
-import styles from "./Container.module.scss";
-import { checkAuth } from "@/http/userApi";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store/store";
+import { useSession } from "next-auth/react";
+
 import { fetchAllProductsInCart } from "@/store/slices/cartSlices";
+
+import { AppDispatch } from "@/store/store";
+
+import styles from "./Container.module.scss";
 
 interface ContainerInterface {
   children: JSX.Element | JSX.Element[];
@@ -13,11 +16,17 @@ interface ContainerInterface {
 
 const Container: React.FC<ContainerInterface> = ({ children }) => {
   const dispatch = useDispatch<AppDispatch>();
+  const session = useSession();
+
+  console.log(session);
 
   useEffect(() => {
-    checkAuth().then((res) => console.log(res));
-    dispatch(fetchAllProductsInCart());
-  }, []);
+    const accessToken =
+      session.data?.user.accessToken ||
+      (localStorage.getItem("CART_TOKEN") as string);
+
+    dispatch(fetchAllProductsInCart(accessToken));
+  }, [session]);
 
   return <div className={styles.container}>{children}</div>;
 };
