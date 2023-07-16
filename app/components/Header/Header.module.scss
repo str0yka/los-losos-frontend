@@ -44,12 +44,15 @@
     .contact {
       display: block;
 
-      font-weight: 600;
-      p {
-      }
+      font-weight: 500;
 
       a {
         color: var(--primaryColor);
+        transition: 0.2s ease color;
+
+        &:hover {
+          color: var(--primaryColorHover);
+        }
       }
     }
   }

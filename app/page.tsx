@@ -3,6 +3,7 @@ import React from "react";
 import { API_URL } from "@/utils/consts";
 import MainPageHeader from "@/app/components/MainPageHeader/MainPageHeader";
 import { CategoryItem } from "@/app/index";
+import Container from "./components/Container/Container";
 
 export const metadata = {
   title: "Redux Toolkit",
@@ -26,9 +27,11 @@ const IndexPage = async () => {
   return (
     <>
       <MainPageHeader categories={categories} />
-      {categories.map((category) => (
-        <CategoryList key={category.title} category={category} />
-      ))}
+      <Container>
+        {categories.map((category) => (
+          <CategoryList key={category.title} category={category} />
+        ))}
+      </Container>
     </>
   );
 };

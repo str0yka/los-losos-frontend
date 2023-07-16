@@ -1,0 +1,26 @@
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 75px;
+  height: auto;
+  object-fit: contain;
+
+  animation: loading-animation 2s infinite ease-in-out;
+}
+
+@keyframes loading-animation {
+  0% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+
+  50% {
+    transform: scale(1.25) translate(-50%, -50%);
+  }
+
+  100% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}

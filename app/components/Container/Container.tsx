@@ -1,34 +1,13 @@
-"use client";
+import React from "react";
 
-import React, { JSX, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useSession } from "next-auth/react";
+import s from "./Container.module.scss";
 
-import { fetchAllProductsInCart } from "@/store/slices/cartSlices";
-
-import { AppDispatch } from "@/store/store";
-
-import styles from "./Container.module.scss";
-
-interface ContainerInterface {
-  children: JSX.Element | JSX.Element[];
+interface ContainerProps {
+  children: React.ReactNode;
 }
 
-const Container: React.FC<ContainerInterface> = ({ children }) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const session = useSession();
-
-  console.log(session);
-
-  useEffect(() => {
-    const accessToken =
-      session.data?.user.accessToken ||
-      (localStorage.getItem("CART_TOKEN") as string);
-
-    dispatch(fetchAllProductsInCart(accessToken));
-  }, [session]);
-
-  return <div className={styles.container}>{children}</div>;
+const Container: React.FC<ContainerProps> = ({ children }) => {
+  return <div className={s.container}>{children}</div>;
 };
 
 export default Container;

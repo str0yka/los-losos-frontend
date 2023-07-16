@@ -7,7 +7,7 @@ export default withAuth(
   },
   {
     callbacks: {
-      authorized: ({ token }) => token?.role === "user",
+      authorized: ({ token }) => token?.role === "admin",
     },
   }
 );

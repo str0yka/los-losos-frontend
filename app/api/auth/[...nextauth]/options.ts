@@ -1,9 +1,8 @@
-import { User } from "@/app";
-import { API_URL } from "@/utils/consts";
-import axios from "axios";
-import type { NextAuthOptions } from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";
-import { headers } from "next/dist/client/components/headers";
+import type { NextAuthOptions } from "next-auth";
+import axios from "axios";
+
+import { API_URL } from "@/utils/consts";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -22,13 +21,22 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        const { data } = await axios.post(`${API_URL}/user/login`, {
+        const body = {
           phone: credentials?.phone,
           code: credentials?.code,
-        });
+        };
 
-        if (data.id) {
-          return data;
+        const data = await fetch(`${API_URL}/user/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+        const user = await data.json();
+
+        if (user.id) {
+          return user;
         } else {
           return null;
         }

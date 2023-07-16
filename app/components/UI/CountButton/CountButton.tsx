@@ -14,6 +14,7 @@ interface CountButtonProps {
 }
 
 const CountButton: React.FC<CountButtonProps> = ({ id }) => {
+  const { data } = useSession();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
   const productInCart: ProductInCart | undefined = useSelector(
@@ -21,7 +22,6 @@ const CountButton: React.FC<CountButtonProps> = ({ id }) => {
       return state.cart.data.find(({ product }) => product?.id === id);
     }
   );
-  const { data } = useSession();
   const count = productInCart?.count || 0;
 
   const handleCart = async (action: "add" | "delete") => {

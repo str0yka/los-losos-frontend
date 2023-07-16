@@ -2,24 +2,18 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 
+import Button from "@/app/components/UI/Button/Button";
 import { CategoryItem } from "@/app/index";
-import RoundedButton from "@/app/components/UI/RoundedButton/RoundedButton";
 
-import styles from "./MainPageHeader.module.scss";
+import s from "./MainPageHeader.module.scss";
+import Container from "../Container/Container";
 
 interface MainPageHeaderProps {
   categories: CategoryItem[];
 }
 
 const MainPageHeader: React.FC<MainPageHeaderProps> = ({ categories }) => {
-  const session = useSession();
-
-  if (session.data) {
-    localStorage.removeItem("CART_TOKEN");
-  }
-
   const list = useRef<null | HTMLUListElement>(null);
 
   useEffect(() => {
@@ -62,14 +56,22 @@ const MainPageHeader: React.FC<MainPageHeaderProps> = ({ categories }) => {
   }, []);
 
   return (
-    <div className={styles.header}>
-      <ul ref={list} className={styles.categoryList}>
-        <li className={styles.categoryItem}>Горячие блюда</li>
-      </ul>
-      <div className={styles.info}>
-        <Link href="/">Доставка и оплата</Link>
-        <RoundedButton fillColor>Корзина</RoundedButton>
-      </div>
+    <div className={s.headerWrapper}>
+      <Container>
+        <div className={s.header}>
+          <ul ref={list} className={s.categoryList}>
+            {categories.map((category) => (
+              <li className={s.categoryItem}>{category.title}</li>
+            ))}
+          </ul>
+          <div className={s.info}>
+            <Link href="/">Доставка и оплата</Link>
+            <Button rounded variant="contained">
+              Корзина
+            </Button>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 };

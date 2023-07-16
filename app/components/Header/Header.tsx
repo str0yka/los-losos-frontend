@@ -2,30 +2,35 @@ import React from "react";
 import Link from "next/link";
 
 import BurgerMenu from "@/app/components/BurgerMenu/BurgerMenu";
-import RoundedButton from "@/app/components/UI/RoundedButton/RoundedButton";
+import Button from "@/app/components/UI/Button/Button";
 
-import styles from "./Header.module.scss";
+import s from "./Header.module.scss";
+import Container from "../Container/Container";
 
 const Header = () => {
   return (
-    <header className={styles.header}>
-      <div className={styles.leftSide}>
-        <Link href="/">
-          <img src="/images/logo.png" alt="" className={styles.logo} />
-        </Link>
-        <div className={styles.contact}>
-          <p>Связаться с нами</p>
-          <a href="tel:78005553535">+7 800 555 35 35</a>
+    <Container>
+      <header className={s.header}>
+        <div className={s.leftSide}>
+          <Link href="/">
+            <img src="/images/logo.png" alt="" className={s.logo} />
+          </Link>
+          <div className={s.contact}>
+            <p>Связаться с нами</p>
+            <a href="tel:78005553535">+7 800 555 35 35</a>
+          </div>
         </div>
-      </div>
-      <div className={styles.rightSide}>
-        <RoundedButton className={styles.button}>профиль</RoundedButton>
-        <RoundedButton className={styles.contactButton} fillColor>
-          позвони нам
-        </RoundedButton>
-        <BurgerMenu />
-      </div>
-    </header>
+        <div className={s.rightSide}>
+          <Button className={s.button} rounded>
+            профиль
+          </Button>
+          <Button className={s.contactButton} rounded variant="contained">
+            позвони нам
+          </Button>
+          <BurgerMenu />
+        </div>
+      </header>
+    </Container>
   );
 };
 

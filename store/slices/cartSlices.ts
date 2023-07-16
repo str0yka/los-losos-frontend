@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useSession } from "next-auth/react";
 
 import { CartInteractionResponse, ProductInCart } from "@/app";
 import { API_URL } from "@/utils/consts";

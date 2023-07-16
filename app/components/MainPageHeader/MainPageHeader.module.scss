@@ -1,78 +1,96 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.headerWrapper {
+  position: sticky;
+  top: 0;
 
-  .categoryList {
+  padding: 5px 0;
+
+  background-color: var(--secondaryColorTransparent);
+  backdrop-filter: blur(20px);
+
+  z-index: 10;
+
+  .header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
 
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    .categoryItem {
-      flex-shrink: 0;
-
-      padding: 10px 15px;
-
-      border-radius: 15px;
-      background-color: var(--secondaryColorLighten);
-
-      cursor: pointer;
-      user-select: none;
-
-      transition: 0.2s ease color;
-
-      &:hover {
-        color: var(--primaryColor);
-      }
-    }
-  }
-
-  .info {
-    display: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .header {
     .categoryList {
-      gap: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       .categoryItem {
-        padding: 10px 0;
+        flex-shrink: 0;
 
-        background: none;
+        padding: 10px 15px;
+
+        border-radius: 15px;
+        background-color: var(--secondaryColorLighten);
+
+        cursor: pointer;
+        user-select: none;
+
+        transition: 0.2s ease color;
+
+        &:hover {
+          color: var(--primaryColor);
+        }
       }
     }
 
     .info {
-      position: relative;
+      display: none;
+    }
+  }
 
-      display: flex;
-      gap: 20px;
-      align-items: center;
+  @media (min-width: 768px) {
+    .header {
+      .categoryList {
+        gap: 20px;
 
-      padding-left: 20px;
+        .categoryItem {
+          padding: 10px 0;
 
-      flex-shrink: 0;
+          background: none;
+        }
+      }
 
-      &::before {
-        content: "";
+      .info {
+        position: relative;
 
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
+        flex-shrink: 0;
+        display: flex;
+        gap: 20px;
+        align-items: center;
 
-        height: 18px;
-        width: 2px;
+        padding-left: 20px;
 
-        background-color: var(--primaryColor);
+        a {
+          transition: all 0.2s ease;
+          &:hover {
+            color: var(--primaryColor);
+          }
+        }
+
+        &::before {
+          content: "";
+
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+
+          height: 18px;
+          width: 2px;
+
+          background-color: var(--primaryColor);
+        }
       }
     }
   }
