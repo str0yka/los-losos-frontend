@@ -1,12 +1,16 @@
-import CategoryList from "@/app/components/CategoryList/CategoryList";
 import React from "react";
-import { API_URL } from "@/utils/consts";
-import MainPageHeader from "@/app/components/MainPageHeader/MainPageHeader";
-import { CategoryItem } from "@/app/index";
-import Container from "./components/Container/Container";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Redux Toolkit",
+import Container from "./components/Container/Container";
+import HomeHeader from "@/app/components/HomeHeader/HomeHeader";
+import CategoryList from "@/app/components/CategoryList/CategoryList";
+
+import { API_URL } from "@/utils/consts";
+
+import { CategoryItem } from "@/app/index";
+
+export const metadata: Metadata = {
+  title: "Доставка | Лось Лосось",
 };
 
 const getCategories = async () => {
@@ -26,7 +30,7 @@ const IndexPage = async () => {
 
   return (
     <>
-      <MainPageHeader categories={categories} />
+      <HomeHeader categories={categories} />
       <Container>
         {categories.map((category) => (
           <CategoryList key={category.title} category={category} />

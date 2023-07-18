@@ -1,6 +1,5 @@
 import CredentialProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
-import axios from "axios";
 
 import { API_URL } from "@/utils/consts";
 

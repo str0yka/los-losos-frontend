@@ -1,10 +1,12 @@
 import React from "react";
 
-import CountButton from "@/app/components/UI/CountButton/CountButton";
-import styles from "./ProductItemLarge.module.scss";
-import * as process from "process";
-import { Product } from "@/store/slices/cartSlices";
+import CountButton from "@/app/components/common/CountButton/CountButton";
+
 import { API_URL } from "@/utils/consts";
+
+import { Product } from "@/app";
+
+import styles from "./ProductItemLarge.module.scss";
 
 interface ProductItemLargerInterface {
   product: Product;

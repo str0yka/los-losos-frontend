@@ -43,10 +43,6 @@ const AfterAuthorize: React.FC<AuthProviderProps> = ({ children }) => {
     }
   }, [status]);
 
-  if (status === "loading") {
-    return <Loading />;
-  }
-
   return children;
 };
 

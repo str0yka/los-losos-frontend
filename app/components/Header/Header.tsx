@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import BurgerMenu from "@/app/components/BurgerMenu/BurgerMenu";
-import Button from "@/app/components/UI/Button/Button";
+import Button from "@/app/components/common/Button/Button";
 
 import s from "./Header.module.scss";
 import Container from "../Container/Container";

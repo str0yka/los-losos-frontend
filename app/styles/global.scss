@@ -4,14 +4,29 @@ body {
   --primaryColor: #fada5e;
   --primaryColorHover: #fad646;
   --neutralColor: #ffffff;
+  --neutralColorTransparent: rgba(255, 255, 255, 0.05);
   --neutralColorDarken: #cccccc;
   --secondaryColorLight: #373737;
   --secondaryColorLighten: #171717;
-  --secondaryColorTransparent: #0e0e0e80;
+  --secondaryColorTransparent: #0e0e0e99;
   --secondaryColor: #0e0e0e;
 
   background-color: var(--secondaryColor);
 }
+
+// body {
+//   --primaryColor: #5efa6b;
+//   --primaryColorHover: #50f85e;
+//   --neutralColor: #000000;
+//   --neutralColorTransparent: rgba(255, 255, 255, 0.05);
+//   --neutralColorDarken: #2e2e2e;
+//   --secondaryColorLight: #aaaaaa;
+//   --secondaryColorLighten: #e6e6e6;
+//   --secondaryColorTransparent: #dddddd99;
+//   --secondaryColor: #dddddd;
+
+//   background-color: var(--secondaryColor);
+// }
 
 * {
   margin: 0;

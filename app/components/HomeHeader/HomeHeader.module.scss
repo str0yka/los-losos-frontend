@@ -14,7 +14,23 @@
     align-items: center;
     justify-content: space-between;
 
+    .logo {
+      display: none;
+    }
+
+    .logo.pinned {
+      display: block;
+      width: 30px;
+      height: auto;
+
+      margin-right: 10px;
+    }
+
     .categoryList {
+      position: relative;
+
+      flex-grow: 1;
+
       display: flex;
       align-items: center;
       gap: 10px;
@@ -51,6 +67,10 @@
 
   @media (min-width: 768px) {
     .header {
+      .logo.pinned {
+        margin-right: 20px;
+      }
+
       .categoryList {
         gap: 20px;
 

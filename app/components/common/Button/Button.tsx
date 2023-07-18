@@ -11,7 +11,7 @@ interface ButtonProps extends ComponentProps<"button"> {
   hover?: boolean;
   href?: string;
   className?: string;
-  children: JSX.Element | string;
+  children: React.ReactNode;
   buttonProps?: ComponentProps<"button">;
 }
 
@@ -30,7 +30,6 @@ const Button: React.FC<ButtonProps> = ({
     size === "small" ? s.small : size === "medium" ? s.medium : s.large;
   const buttonRounded = rounded ? s.rounded : s.square;
   const buttonHover = hover && s.hover;
-  const buttonClassName = className || null;
   const buttonDefaultClassName = s.button;
 
   const classes = classNames(
@@ -38,8 +37,8 @@ const Button: React.FC<ButtonProps> = ({
     buttonSize,
     buttonRounded,
     buttonHover,
-    buttonClassName,
-    buttonDefaultClassName
+    buttonDefaultClassName,
+    className
   );
 
   return href ? (
