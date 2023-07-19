@@ -1,8 +1,8 @@
 import React, { ComponentProps } from "react";
 import Link from "next/link";
+import classNames from "classnames";
 
 import s from "./Button.module.scss";
-import classNames from "classnames";
 
 interface ButtonProps extends ComponentProps<"button"> {
   variant?: "contained" | "outlined" | "outlined-secondary";
@@ -25,26 +25,17 @@ const Button: React.FC<ButtonProps> = ({
   children,
   ...buttonProps
 }) => {
-  const buttonVariant =
-    variant === "contained"
-      ? s.contained
-      : variant === "outlined"
-      ? s.outlined
-      : s.outlinedSecondary;
-  const buttonSize =
-    size === "small" ? s.small : size === "medium" ? s.medium : s.large;
-  const buttonRounded = rounded ? s.rounded : s.square;
-  const buttonHover = hover && s.hover;
-  const buttonDefaultClassName = s.button;
-
-  const classes = classNames(
-    buttonVariant,
-    buttonSize,
-    buttonRounded,
-    buttonHover,
-    buttonDefaultClassName,
-    className
-  );
+  const classes = classNames(s.button, className, {
+    [s.contained]: variant === "contained",
+    [s.outlined]: variant === "outlined",
+    [s.outlinedSecondary]: variant === "outlined-secondary",
+    [s.small]: size === "small",
+    [s.medium]: size === "medium",
+    [s.large]: size === "large",
+    [s.rounded]: rounded,
+    [s.square]: !rounded,
+    [s.hover]: hover,
+  });
 
   return href ? (
     <Link href={href}>

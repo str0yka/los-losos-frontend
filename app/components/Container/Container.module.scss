@@ -12,16 +12,15 @@
 }
 
 @media (min-width: 960px) {
-  .container {
-    margin: 0 auto;
+  .container.medium,
+  .container.wide {
     padding: 0 30px;
     max-width: 960px;
   }
 }
 
 @media (min-width: 1280px) {
-  .container {
-    margin: 0 auto;
+  .container.wide {
     max-width: 1280px;
   }
 }

@@ -1,0 +1,61 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  gap: 10px;
+}
+
+.trash {
+  cursor: pointer;
+
+  path {
+    fill: var(--secondaryColorLight);
+    transition: fill .2s ease;
+  }
+
+  &:hover {
+    path {
+      fill: var(--primaryColor);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .cart {
+    gap: 15px;
+  }
+
+  .title {
+    gap: 15px;
+  }
+}
+
+@media (min-width: 960px) {
+  .cart {
+    gap: 20px;
+  }
+
+  .title {
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cart {
+    gap: 35px;
+  }
+
+  .title {
+    gap: 30px;
+  }
+}

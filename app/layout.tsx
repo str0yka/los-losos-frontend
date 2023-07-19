@@ -27,7 +27,7 @@ interface RootLayoutInterface {
 // 14. В папке components должны быть провайдеры, common, всё что относится к RootLayout
 // 15. Нужны правила на z-index
 // 16. Для текста сделать компонент Typography
-// 17. Сделать UI-kit (input, button, arrowbutton || button with svg)
+// 17. Сделать UI-kit (input, button, arrowbutton || button with svg, icon)
 // 18. ProgressLine превратить в ProgressLine со своей логикой в зависимости от params
 
 const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
