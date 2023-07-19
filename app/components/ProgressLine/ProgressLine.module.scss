@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 600px;
+
+  margin: 0 auto;
+}
+
+.progressLine {
+  flex-grow: 1;
+
+  height: 2px;
+
+  border: 1px var(--secondaryColorLight) dashed;
+}

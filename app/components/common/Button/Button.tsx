@@ -5,7 +5,7 @@ import s from "./Button.module.scss";
 import classNames from "classnames";
 
 interface ButtonProps extends ComponentProps<"button"> {
-  variant?: "contained" | "outlined";
+  variant?: "contained" | "outlined" | "outlined-secondary";
   size?: "small" | "medium" | "large";
   rounded?: boolean;
   hover?: boolean;
@@ -25,7 +25,12 @@ const Button: React.FC<ButtonProps> = ({
   children,
   ...buttonProps
 }) => {
-  const buttonVariant = variant === "contained" ? s.contained : s.outlined;
+  const buttonVariant =
+    variant === "contained"
+      ? s.contained
+      : variant === "outlined"
+      ? s.outlined
+      : s.outlinedSecondary;
   const buttonSize =
     size === "small" ? s.small : size === "medium" ? s.medium : s.large;
   const buttonRounded = rounded ? s.rounded : s.square;

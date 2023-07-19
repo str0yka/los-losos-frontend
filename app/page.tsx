@@ -10,7 +10,7 @@ import { API_URL } from "@/utils/consts";
 import { CategoryItem } from "@/app/index";
 
 export const metadata: Metadata = {
-  title: "Доставка | Лось Лосось",
+  title: "Доставка | Лось-Лосось",
 };
 
 const getCategories = async () => {

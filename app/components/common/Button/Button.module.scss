@@ -20,7 +20,7 @@
   color: var(--secondaryColor);
   transition: background-color 0.2s ease;
 
-  &:hover {
+  &.hover:hover {
     background-color: var(--primaryColorHover);
   }
 }
@@ -30,9 +30,19 @@
   color: var(--primaryColor);
   transition: all 0.2s ease;
 
-  &:hover {
+  &.hover:hover {
     border-color: var(--primaryColorHover);
     color: var(--primaryColorHover);
+  }
+}
+
+.outlinedSecondary {
+  border: var(--secondaryColorLight) 1px solid;
+  color: var(--neutralColor);
+  transition: all 0.2s ease;
+
+  &.hover:hover {
+    border-color: var(--primaryColorHover);
   }
 }
 
