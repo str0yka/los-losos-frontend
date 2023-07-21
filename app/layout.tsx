@@ -29,6 +29,7 @@ interface RootLayoutInterface {
 // 16. Для текста сделать компонент Typography
 // 17. Сделать UI-kit (input, button, arrowbutton || button with svg, icon)
 // 18. ProgressLine превратить в ProgressLine со своей логикой в зависимости от params
+// 19. Вместо <span class="visually-hidden"></... сделать отдельный компонент
 
 const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
   return (

@@ -6,6 +6,11 @@ import s from "./Button.module.scss";
 
 interface ButtonProps extends ComponentProps<"button"> {
   variant?: "contained" | "outlined" | "outlined-secondary";
+  textVariant?:
+    | "uppercase"
+    | "lowercase"
+    | "capitalize"
+    | "capitalize-first-latter";
   size?: "small" | "medium" | "large";
   rounded?: boolean;
   hover?: boolean;
@@ -17,6 +22,7 @@ interface ButtonProps extends ComponentProps<"button"> {
 
 const Button: React.FC<ButtonProps> = ({
   variant = "outlined",
+  textVariant = "uppercase",
   size = "small",
   rounded = false,
   hover = true,
@@ -29,6 +35,9 @@ const Button: React.FC<ButtonProps> = ({
     [s.contained]: variant === "contained",
     [s.outlined]: variant === "outlined",
     [s.outlinedSecondary]: variant === "outlined-secondary",
+    [s.uppercase]: textVariant === "uppercase",
+    [s.lowercase]: textVariant === "lowercase",
+    [s.capitalize]: textVariant === "capitalize",
     [s.small]: size === "small",
     [s.medium]: size === "medium",
     [s.large]: size === "large",
@@ -36,6 +45,13 @@ const Button: React.FC<ButtonProps> = ({
     [s.square]: !rounded,
     [s.hover]: hover,
   });
+
+  if (
+    textVariant === "capitalize-first-latter" &&
+    typeof children === "string"
+  ) {
+    children.charAt(0);
+  }
 
   return href ? (
     <Link href={href}>

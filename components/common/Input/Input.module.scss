@@ -1,0 +1,31 @@
+.label {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+
+  border-radius: 10px;
+  border: 1px var(--secondaryColorLighten) solid;
+
+  font-size: 14px;
+  color: var(--neutralColorDarken);
+
+  cursor: text;
+
+  &:focus-within {
+    border: 1px var(--secondaryColorLight) solid;
+
+    color: var(--neutralColor);
+  }
+}
+
+.input {
+  flex-grow: 1;
+  height: 100%;
+
+  background: none;
+  outline: none;
+  border: none;
+
+  color: inherit;
+}

@@ -1,5 +1,4 @@
 .button {
-  text-transform: uppercase;
   font-weight: 500;
 }
 
@@ -44,6 +43,18 @@
   &.hover:hover {
     border-color: var(--primaryColorHover);
   }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .rounded {
