@@ -1,7 +1,7 @@
 import React from "react";
 
 import { CategoryItem, Product } from "@/app/index";
-import ProductItemLarge from "@/app/components/ProductItemLarge/ProductItemLarge";
+import ProductItemLarge from "@/app/_components/ProductItemLarge/ProductItemLarge";
 
 import styles from "./CategoryList.module.scss";
 

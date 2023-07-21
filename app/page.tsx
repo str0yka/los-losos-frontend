@@ -1,9 +1,9 @@
 import React from "react";
 import { Metadata } from "next";
 
-import Container from "./components/Container/Container";
-import HomeHeader from "@/app/components/HomeHeader/HomeHeader";
-import CategoryList from "@/app/components/CategoryList/CategoryList";
+import Container from "@/components/common/Container/Container";
+import HomeHeader from "@/app/_components/HomeHeader/HomeHeader";
+import CategoryList from "@/app/_components/CategoryList/CategoryList";
 
 import { API_URL } from "@/utils/consts";
 

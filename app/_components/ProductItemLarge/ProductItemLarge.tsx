@@ -1,9 +1,7 @@
 import React from "react";
 
-import CountButton from "@/app/components/common/CountButton/CountButton";
-
-import { API_URL } from "@/utils/consts";
-
+import CountButton from "@/components/common/CountButton/CountButton";
+import { API_URL } from "@/utils";
 import { Product } from "@/app";
 
 import styles from "./ProductItemLarge.module.scss";

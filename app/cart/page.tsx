@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
-import Container from "@/app/components/Container/Container";
-import ArrowButton from "@/app/components/common/ArrowButton/ArrowButton";
-import ProgressLine from "@/app/components/ProgressLine/ProgressLine";
+import Container from "@/components/common/Container/Container";
+import Button from "@/components/common/Button/Button";
+import ArrowButton from "@/components/common/ArrowButton/ArrowButton";
+import ProgressLine from "@/components/common/ProgressLine/ProgressLine";
 
 import s from "./page.module.scss";
-import Button from "@/app/components/common/Button/Button";
 
 export const metadata: Metadata = {
   title: "Корзина | Лось-Лосось",
@@ -47,7 +47,7 @@ const Cart = () => {
           </button>
         </div>
         <Button size="large" variant="contained" hover={false}>
-          До бесплатной доствки не хватает 1533 ₽
+          До бесплатной доствки не хватает 1553 ₽
         </Button>
       </div>
     </Container>

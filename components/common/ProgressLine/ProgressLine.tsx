@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import ProgressLineButton from "@/app/components/ProgressLine/ProgressLineButton/ProgressLineButton";
-import { useProgressLineButtons } from "@/app/components/ProgressLine/ProgressLineButton/hooks/useProgressLineButtons";
+import ProgressLineButton from "@/components/common/ProgressLine/ProgressLineButton/ProgressLineButton";
+import { useProgressLineButtons } from "@/components/common/ProgressLine/ProgressLineButton/hooks";
 
 import s from "./ProgressLine.module.scss";
 

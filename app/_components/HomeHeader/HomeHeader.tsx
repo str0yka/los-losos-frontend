@@ -3,11 +3,9 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 
-import Container from "../Container/Container";
-import Button from "@/app/components/common/Button/Button";
-import { CategoryItem } from "@/app/index";
-
+import Container from "@/components/common/Container/Container";
 import { useSlider } from "./hooks/useSlider";
+import { CategoryItem } from "@/app";
 
 import s from "./HomeHeader.module.scss";
 import ToCartButton from "./ToCartButton/ToCartButton";

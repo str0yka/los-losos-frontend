@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-import BurgerMenu from "@/app/components/BurgerMenu/BurgerMenu";
-import Button from "@/app/components/common/Button/Button";
+import Container from "@/components/common/Container/Container";
+import BurgerMenu from "@/components/common/BurgerMenu/BurgerMenu";
+import Button from "@/components/common/Button/Button";
 
 import s from "./Header.module.scss";
-import Container from "../Container/Container";
 
 const Header = () => {
   return (

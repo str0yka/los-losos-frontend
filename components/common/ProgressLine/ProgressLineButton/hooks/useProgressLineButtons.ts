@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { ProgressLineButtonProps } from "@/app/components/ProgressLine/ProgressLineButton/ProgressLineButton";
+import { ProgressLineButtonProps } from "@/components/common/ProgressLine/ProgressLineButton/ProgressLineButton";
 
 export const useProgressLineButtons = (
   buttons: Array<{ path: string; name: string }>

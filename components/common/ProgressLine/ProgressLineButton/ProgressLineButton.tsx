@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "@/app/components/common/Button/Button";
+import Button from "@/components/common/Button/Button";
 
 export interface ProgressLineButtonProps {
   path: string;
