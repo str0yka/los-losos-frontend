@@ -13,6 +13,10 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  label {
+    flex-grow: 1;
+  }
 }
 
 .title {
@@ -21,6 +25,10 @@
 }
 
 @media (min-width: 768px) {
+  .promocode {
+    width: 50%;
+  }
+
   .promocodeAction {
     flex-direction: row;
   }

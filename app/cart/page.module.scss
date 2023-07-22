@@ -4,35 +4,45 @@
   gap: 10px;
 }
 
-.titleBlock {
+.totalPriceBlock {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  gap: 5px;
+
+  div {
+    flex-grow: 1;
+    align-self: flex-end;
+    height: 2px;
+
+    border: 1px var(--secondaryColorLight) dashed;
+  }
 }
 
-.title {
-  display: flex;
-  gap: 10px;
-}
+.confirmButton {
+  position: relative;
 
-.trash {
-  cursor: pointer;
+  svg {
+    position: absolute;
+    right: calc(50% - 60px);
+    top: 50%;
+    transform: translateY(-50%);
 
-  path {
-    fill: var(--secondaryColorLight);
-    transition: fill .2s ease;
+    transition: right .2s ease;
+
+    path {
+      fill: var(--secondaryColor);
+    }
   }
 
   &:hover {
-    path {
-      fill: var(--primaryColor);
+    svg {
+      right: calc(50% - 65px);
     }
   }
 }
 
 @media (min-width: 768px) {
   .cart {
-    margin-top: 15px;
     gap: 15px;
   }
 
@@ -43,7 +53,6 @@
 
 @media (min-width: 960px) {
   .cart {
-    margin-top: 20px;
     gap: 20px;
   }
 
@@ -54,7 +63,6 @@
 
 @media (min-width: 1280px) {
   .cart {
-    margin-top: 35px;
     gap: 35px;
   }
 

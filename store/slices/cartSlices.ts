@@ -52,14 +52,40 @@ export const fetchDeleteFromCart = createAsyncThunk(
   }
 );
 
+export const fetchDeleteOneFromCart = createAsyncThunk(
+  "cart/fetchDeleteOneFromCart",
+  async ({ id, accessToken }: { id: number; accessToken: string }) => {
+    const { success } = await appFetch.delete("/cart/one", {
+      headers: { authorization: accessToken },
+      body: { id },
+    });
+
+    if (!success) throw new Error("Не удалось удалить товар из корзины");
+
+    return id;
+  }
+);
+
+export const fetchDeleteAllFromCart = createAsyncThunk(
+  "cart/fetchDeleteAllFromCart",
+  async (accessToken: string) => {
+    const { success } = await appFetch.delete("/cart/all", {
+      headers: { authorization: accessToken },
+    });
+
+    if (!success) throw new Error("Не удалось удалить товары из корзины");
+    return;
+  }
+);
+
 type cartStateType = {
   data: Array<ProductInCart>;
-  status: "loading" | "finished" | "error";
+  status: "loading" | "loading/one" | "loading/all" | "finished" | "error";
 };
 
 const initialState: cartStateType = {
   data: [],
-  status: "loading",
+  status: "loading/all",
 };
 
 const cartSlices = createSlice({
@@ -69,7 +95,7 @@ const cartSlices = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProductsInCart.pending, (state) => {
-        state.status = "loading";
+        state.status = "loading/all";
       })
       .addCase(fetchAllProductsInCart.fulfilled, (state, { payload }) => {
         state.data = payload;
@@ -79,7 +105,7 @@ const cartSlices = createSlice({
         state.status = "error";
       })
       .addCase(fetchAddToCart.pending, (state) => {
-        state.status = "loading";
+        state.status = "loading/one";
       })
       .addCase(fetchAddToCart.fulfilled, (state, { payload }) => {
         const candidate = state.data.find(
@@ -96,7 +122,7 @@ const cartSlices = createSlice({
         state.status = "error";
       })
       .addCase(fetchDeleteFromCart.pending, (state) => {
-        state.status = "loading";
+        state.status = "loading/one";
       })
       .addCase(fetchDeleteFromCart.fulfilled, (state, { payload }) => {
         const candidate = state.data.find(
@@ -112,6 +138,26 @@ const cartSlices = createSlice({
         state.status = "finished";
       })
       .addCase(fetchDeleteFromCart.rejected, (state) => {
+        state.status = "error";
+      })
+      .addCase(fetchDeleteOneFromCart.pending, (state) => {
+        state.status = "loading/one";
+      })
+      .addCase(fetchDeleteOneFromCart.fulfilled, (state, { payload }) => {
+        state.data = state.data.filter(({ product }) => product.id !== payload);
+        state.status = "finished";
+      })
+      .addCase(fetchDeleteOneFromCart.rejected, (state) => {
+        state.status = "error";
+      })
+      .addCase(fetchDeleteAllFromCart.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchDeleteAllFromCart.fulfilled, (state) => {
+        state.data = [];
+        state.status = "finished";
+      })
+      .addCase(fetchDeleteAllFromCart.rejected, (state) => {
         state.status = "error";
       });
   },

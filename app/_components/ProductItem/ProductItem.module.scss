@@ -1,4 +1,10 @@
+.delete {
+  display: none;
+}
+
 .product {
+  position: relative;
+
   display: grid;
   grid-template-columns: 130px auto;
   gap: 8px;
@@ -38,6 +44,8 @@
       margin-bottom: 8px;
 
       span {
+        flex-shrink: 0;
+
         font-size: 14px;
         color: var(--neutralColorDarken);
       }
@@ -66,7 +74,11 @@
 }
 
 @media (min-width: 768px) {
-  .product {
+  .delete {
+    display: block;
+  }
+
+  .product.large {
     background-color: var(--secondaryColorLighten);
     padding: 20px;
     border-radius: 20px;
@@ -108,5 +120,53 @@
         }
       }
     }
+  }
+
+  .product.medium {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 20px;
+
+    background-color: var(--secondaryColorLighten);
+    border-radius: 10px;
+
+    .image {
+      width: 80px;
+      height: 80px;
+    }
+
+    .nonImage {
+      flex-grow: 1;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      height: 100%;
+
+      .info {
+        flex-grow: 1;
+
+        .title {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+
+          margin-bottom: 3px;
+        }
+
+        .foods {
+          display: none;
+          max-width: 220px;
+        }
+      }
+
+      .priceBlock {
+        gap: 20px;
+      }
+    }
+
   }
 }

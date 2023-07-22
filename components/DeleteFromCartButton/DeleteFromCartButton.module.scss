@@ -1,0 +1,14 @@
+.button {
+  cursor: pointer;
+
+  path {
+    fill: var(--secondaryColorLight);
+    transition: fill .2s ease;
+  }
+
+  &:hover {
+    path {
+      fill: var(--primaryColor);
+    }
+  }
+}

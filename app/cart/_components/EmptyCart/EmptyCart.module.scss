@@ -1,0 +1,30 @@
+.page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+}
+
+.emoji {
+  font-size: 48px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.subtitle {
+  max-width: 375px;
+  width: 100%;
+}
+
+.info {
+  margin-bottom: 20px;
+}
