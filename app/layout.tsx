@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 import Header from "@/app/_components/Header/Header";
 import StoreProvider from "@/components/StoreProvider/StoreProvider";
 
@@ -22,14 +22,11 @@ interface RootLayoutInterface {
 // 6. В папке store или slices сделать папку actions
 // 10. Все запросы axios переписать на fetch
 // 11. Сделать кастомные запросы fetch
-// 12. Папка components должны быть в корне
-// 13. Переименовать папку UI в common
-// 14. В папке components должны быть провайдеры, common, всё что относится к RootLayout
 // 15. Нужны правила на z-index
-// 16. Для текста сделать компонент Typography
+// 16. ? Для текста сделать компонент Typography
 // 17. Сделать UI-kit (input, button, arrowbutton || button with svg, icon)
-// 18. ProgressLine превратить в ProgressLine со своей логикой в зависимости от params
 // 19. Вместо <span class="visually-hidden"></... сделать отдельный компонент
+// 20. Сделать хук useAppDispatch
 
 const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
   return (

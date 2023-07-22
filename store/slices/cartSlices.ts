@@ -1,20 +1,20 @@
-import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { CartInteractionResponse, ProductInCart } from "@/app";
-import { API_URL } from "@/utils";
+import { ProductInCart } from "@/app";
+import { appFetch } from "@/http";
 
 export const fetchAllProductsInCart = createAsyncThunk(
   "cart/fetchAllProductsInCart",
-  async (accessToken?: string | undefined) => {
-    const config = accessToken
-      ? { headers: { authorization: `Bearer ${accessToken}` } }
-      : { headers: { authorization: `${localStorage.getItem("CART_TOKEN")}` } };
+  async (accessToken: string | undefined) => {
+    const init = !!accessToken
+      ? { headers: { authorization: accessToken } }
+      : undefined;
 
-    const { data } = await axios.get<Array<ProductInCart>>(
-      API_URL + "/cart",
-      config
-    );
+    const data = await appFetch.get("/cart", init);
+
+    if ("message" in data) {
+      return [];
+    }
 
     return data;
   }
@@ -23,11 +23,10 @@ export const fetchAllProductsInCart = createAsyncThunk(
 export const fetchAddToCart = createAsyncThunk(
   "cart/fetchAddToCart",
   async ({ id, accessToken }: { id: number; accessToken: string }) => {
-    const { data } = await axios.post<CartInteractionResponse>(
-      API_URL + "/cart",
-      { id },
-      { headers: { authorization: `Bearer ${accessToken}` } }
-    );
+    const data = await appFetch.post("/cart", {
+      headers: { authorization: accessToken },
+      body: { id },
+    });
 
     if (data.token) {
       localStorage.setItem("CART_TOKEN", data.token);
@@ -40,13 +39,10 @@ export const fetchAddToCart = createAsyncThunk(
 export const fetchDeleteFromCart = createAsyncThunk(
   "cart/fetchDeleteFromCart",
   async ({ id, accessToken }: { id: number; accessToken: string }) => {
-    const { data } = await axios.delete<CartInteractionResponse>(
-      API_URL + "/cart",
-      {
-        data: { id },
-        headers: { authorization: `Bearer ${accessToken}` },
-      }
-    );
+    const data = await appFetch.delete("/cart", {
+      headers: { authorization: accessToken },
+      body: { id },
+    });
 
     if (data.token) {
       localStorage.setItem("CART_TOKEN", data.token);
@@ -60,6 +56,7 @@ type cartStateType = {
   data: Array<ProductInCart>;
   status: "loading" | "finished" | "error";
 };
+
 const initialState: cartStateType = {
   data: [],
   status: "loading",

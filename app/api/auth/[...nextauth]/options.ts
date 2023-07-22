@@ -2,6 +2,7 @@ import CredentialProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
 
 import { API_URL } from "@/utils/consts";
+import { appFetch } from "@/http";
 
 export const options: NextAuthOptions = {
   providers: [
@@ -12,11 +13,13 @@ export const options: NextAuthOptions = {
           label: "Ваш номер телефона:",
           type: "text",
           placeholder: "Введите ваш номер телефона",
+          required: true,
         },
         code: {
           label: "Код из СМС:",
           type: "number",
           placeholder: "Введите код из СМС",
+          required: true,
         },
       },
       async authorize(credentials) {
@@ -25,14 +28,7 @@ export const options: NextAuthOptions = {
           code: credentials?.code,
         };
 
-        const data = await fetch(`${API_URL}/user/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        });
-        const user = await data.json();
+        const user = await appFetch.post("/user/login", { body });
 
         if (user.id) {
           return user;

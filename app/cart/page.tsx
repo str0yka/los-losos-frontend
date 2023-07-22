@@ -6,7 +6,7 @@ import ProgressLine from "@/components/common/ProgressLine/ProgressLine";
 import FreeDeliveryInfo from "@/app/cart/_components/FreeDeliveryInfo/FreeDeliveryInfo";
 
 import s from "./page.module.scss";
-import Input from "@/components/common/Input/Input";
+import Promocode from "./_components/Promocode/Promocode";
 
 export const metadata: Metadata = {
   title: "Корзина | Лось-Лосось",
@@ -48,7 +48,7 @@ const Cart = () => {
           </button>
         </div>
         <FreeDeliveryInfo />
-        <Input variant="phone" placeholder="Введите ваш промокод..." />
+        <Promocode />
       </div>
     </Container>
   );

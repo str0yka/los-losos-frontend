@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import { fetchAllProductsInCart } from "@/store/slices/cartSlices";
 
 import { AppDispatch } from "@/store/store";
-import Loading from "../Loading/Loading";
+import { useAccessToken } from "@/hooks/useAccessToken";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -23,21 +23,11 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 };
 
 const AfterAuthorize: React.FC<AuthProviderProps> = ({ children }) => {
-  const { data, status } = useSession();
+  const { status } = useSession();
   const dispatch = useDispatch<AppDispatch>();
+  const accessToken = useAccessToken();
 
   useEffect(() => {
-    let accessToken;
-
-    if (status === "authenticated") {
-      localStorage.removeItem("CART_TOKEN");
-      accessToken = data.user.accessToken;
-    }
-
-    if (status === "unauthenticated") {
-      accessToken = localStorage.getItem("CART_TOKEN") as string;
-    }
-
     if (status !== "loading") {
       dispatch(fetchAllProductsInCart(accessToken));
     }

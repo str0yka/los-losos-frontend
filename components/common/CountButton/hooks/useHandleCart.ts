@@ -1,23 +1,21 @@
 import { useState } from "react";
-import { useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "@/store/store";
 import { fetchAddToCart, fetchDeleteFromCart } from "@/store/slices/cartSlices";
+import { useAccessToken } from "@/hooks/useAccessToken";
 
 export const useHandleCart = (id: number) => {
   const [isLoading, setIsLoading] = useState(false);
-  const { data } = useSession();
   const dispatch = useDispatch<AppDispatch>();
   const count: number = useSelector((state: RootState) => {
     const product = state.cart.data.find(({ product }) => product?.id === id);
-    if (product) return product.count;
-    return 0;
+    if (!product) return 0;
+    return product.count;
   });
+  const accessToken = useAccessToken();
 
   const handleCart = async (action: "add" | "delete") => {
-    const accessToken =
-      data?.user.accessToken || (localStorage.getItem("CART_TOKEN") as string);
     try {
       setIsLoading(true);
       const options = { id, accessToken };
