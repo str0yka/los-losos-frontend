@@ -24,6 +24,23 @@
   font-weight: 300;
 }
 
+.promocodeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.promocodeTitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.promocodeSubtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--neutralColor)
+}
+
 @media (min-width: 768px) {
   .promocode {
     width: 50%;

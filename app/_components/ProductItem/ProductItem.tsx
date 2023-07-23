@@ -34,7 +34,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
       <div className={s.nonImage}>
         <div className={s.info}>
           <h3 className={s.title}>
-            {product.title} <span>{product.weight} г.</span>
+            {product.title} <span>{product.weight} г</span>
           </h3>
           <p className={s.foods}>{product.foods}</p>
         </div>

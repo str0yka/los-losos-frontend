@@ -28,6 +28,10 @@ const DeleteFromCartButton: React.FC<DeleteFromCartButtonProps> = ({
     if (id) {
       dispatch(fetchDeleteOneFromCart({ accessToken, id }));
     } else {
+      const wantDelete = confirm(
+        "Вы действительно хотите удалить все товары из корзины?"
+      );
+      if (!wantDelete) return;
       dispatch(fetchDeleteAllFromCart(accessToken));
     }
   };

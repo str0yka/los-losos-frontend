@@ -7,7 +7,7 @@ import { useTotalPrice } from "@/hooks/useTotalPrice";
 import { PRICE_FOR_FREE_DELIVERY } from "@/utils";
 
 const FreeDeliveryInfo = () => {
-  const totalPrice = useTotalPrice();
+  const { totalPrice } = useTotalPrice();
   const amountToFreeShipping = PRICE_FOR_FREE_DELIVERY - totalPrice;
 
   return (

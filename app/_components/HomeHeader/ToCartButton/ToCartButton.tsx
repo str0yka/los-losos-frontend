@@ -8,7 +8,7 @@ const ToCartButton = () => {
 
   return (
     <Button rounded variant="contained" href="/cart">
-      {!!totalCount ? `Корзина | ${totalCount}` : `Корзина`}
+      Корзина {!!totalCount && `| ${totalCount}`}
     </Button>
   );
 };

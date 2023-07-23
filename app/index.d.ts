@@ -31,3 +31,12 @@ export interface User {
   role: "user" | "admin";
   cartId: number;
 }
+
+export type Promocode = {
+  id: number;
+  code: string;
+  type: "fix" | "percentage";
+  value: number;
+  name: string | null;
+  text: string | null;
+};

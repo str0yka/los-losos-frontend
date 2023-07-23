@@ -13,6 +13,10 @@
 
   border-bottom: var(--secondaryColorLighten) 1px solid;
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   .image {
     overflow: hidden;
 

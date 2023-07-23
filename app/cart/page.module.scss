@@ -1,7 +1,7 @@
 .cart {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .totalPriceBlock {
@@ -9,7 +9,7 @@
   justify-content: space-between;
   gap: 5px;
 
-  div {
+  .line {
     flex-grow: 1;
     align-self: flex-end;
     height: 2px;
@@ -38,26 +38,6 @@
     svg {
       right: calc(50% - 65px);
     }
-  }
-}
-
-@media (min-width: 768px) {
-  .cart {
-    gap: 15px;
-  }
-
-  .title {
-    gap: 15px;
-  }
-}
-
-@media (min-width: 960px) {
-  .cart {
-    gap: 20px;
-  }
-
-  .title {
-    gap: 20px;
   }
 }
 

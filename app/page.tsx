@@ -25,7 +25,7 @@ const getCategories = async () => {
   return response.json();
 };
 
-const IndexPage = async () => {
+const Home = async () => {
   const categories: CategoryItem[] | unknown = await getCategories();
 
   if (!Array.isArray(categories)) return <h1>error</h1>;
@@ -42,4 +42,4 @@ const IndexPage = async () => {
   );
 };
 
-export default IndexPage;
+export default Home;

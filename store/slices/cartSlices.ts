@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { ProductInCart } from "@/app";
 import { appFetch } from "@/http";
+import store from "@/store/store";
 
 export const fetchAllProductsInCart = createAsyncThunk(
   "cart/fetchAllProductsInCart",

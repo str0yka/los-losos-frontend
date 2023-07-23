@@ -1,29 +1,38 @@
 "use client";
 
 import React from "react";
+import classes from "classnames";
 
-import ProgressLineButton from "@/components/common/ProgressLine/ProgressLineButton/ProgressLineButton";
-import { useProgressLineButtons } from "@/components/common/ProgressLine/ProgressLineButton/hooks";
+import ProgressLineButton from "@/components/common/ProgressLine/ProgressLineItem/ProgressLineItem";
+import { useProgressLine } from "./hooks";
 
 import s from "./ProgressLine.module.scss";
 
-const ProgressLine = () => {
-  const progressButtons = useProgressLineButtons([
-    { path: "/cart", name: "Корзина" },
-    { path: "/order", name: "Оформление заказа" },
-    { path: "/confirm", name: "Заказ принят" },
-  ]);
+export interface ProgressProps {
+  path: string;
+  name: string;
+  currentOrPrevious: boolean;
+}
+
+interface ProgressLineProps {
+  progress: { path: string; name: string }[];
+}
+
+const ProgressLine: React.FC<ProgressLineProps> = ({ progress }) => {
+  const progressItems = useProgressLine(progress);
+  const progressLineClassName = (currentOrPrevious: boolean) =>
+    classes({ [s.progressLine]: true, [s.previous]: currentOrPrevious });
 
   return (
     <div className={s.header}>
-      {progressButtons?.map(({ path, name, currentOrPrevious }, index) => (
-        <React.Fragment key={path}>
-          {!!index && <div className={s.progressLine}></div>}
-          <ProgressLineButton
-            path={path}
-            name={name}
-            currentOrPrevious={currentOrPrevious}
-          />
+      {progressItems?.map((progress, index) => (
+        <React.Fragment key={progress.path}>
+          {!!index && (
+            <div
+              className={progressLineClassName(progress.currentOrPrevious)}
+            ></div>
+          )}
+          <ProgressLineButton progress={progress} />
         </React.Fragment>
       ))}
     </div>

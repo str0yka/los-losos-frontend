@@ -1,0 +1,70 @@
+.check {
+  padding: 15px;
+
+  border-radius: 20px;
+  border: 1px var(--secondaryColorLight) solid;
+}
+
+.title {
+  margin-bottom: 15px;
+
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.list {
+  margin-bottom: 15px;
+
+  border-bottom: 1px var(--secondaryColorLight) solid;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 75px;
+}
+
+.itemTitle,
+.itemPrice {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.itemDescription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.line {
+  flex-grow: 1;
+
+  height: 2px;
+
+  border: 1px var(--secondaryColorLight) dashed;
+}
+
+.totalPriceBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.totalPrice,
+.totalPriceTitle {
+  font-size: 14px;
+  font-weight: 300;
+}

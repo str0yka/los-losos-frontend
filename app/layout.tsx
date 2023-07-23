@@ -27,6 +27,7 @@ interface RootLayoutInterface {
 // 17. Сделать UI-kit (input, button, arrowbutton || button with svg, icon)
 // 19. Вместо <span class="visually-hidden"></... сделать отдельный компонент
 // 20. Сделать хук useAppDispatch
+// 21. EmptyCart, NotFoundPage, Loading плохо отображаются на маленьких телефонах
 
 const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
   return (
@@ -35,7 +36,7 @@ const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
         <StoreProvider>
           <AuthProvider>
             <Header />
-            {children}
+            <div className="main">{children}</div>
           </AuthProvider>
         </StoreProvider>
       </body>

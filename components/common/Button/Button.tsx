@@ -16,7 +16,7 @@ interface ButtonProps extends ComponentProps<"button"> {
   hover?: boolean;
   href?: string;
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   buttonProps?: ComponentProps<"button">;
 }
 

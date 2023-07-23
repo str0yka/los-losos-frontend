@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { cartReducer } from "@/store/slices/cartSlices";
+import { promocodeReducer } from "@/store/slices/promocodeSlice";
 
 const store = configureStore({
   reducer: {
     cart: cartReducer,
+    promocode: promocodeReducer,
   },
 });
 

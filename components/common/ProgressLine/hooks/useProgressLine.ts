@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { ProgressLineButtonProps } from "@/components/common/ProgressLine/ProgressLineButton/ProgressLineButton";
+import { ProgressProps } from "./../ProgressLine";
 
-export const useProgressLineButtons = (
+export const useProgressLine = (
   buttons: Array<{ path: string; name: string }>
 ) => {
   const pathname = usePathname();
   const [progressButtonsProps, setProgressButtonsProps] = useState<
-    null | ProgressLineButtonProps[]
+    null | ProgressProps[]
   >(null);
 
   useEffect(() => {
@@ -26,6 +26,8 @@ export const useProgressLineButtons = (
       })
     );
   }, [pathname]);
+
+  // TODO: тут надо проверить, если возвращается null, то вернуть скелетон
 
   return progressButtonsProps;
 };

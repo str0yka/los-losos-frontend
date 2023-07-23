@@ -13,18 +13,20 @@
 
 @media (min-width: 768px) {
   .titleBlock {
-    padding: 15px 0;
+    padding: 20px 0;
   }
-}
 
-@media (min-width: 960px) {
-  .titleBlock {
-    padding: 25px 0;
+  .title {
+    gap: 20px;
   }
 }
 
 @media (min-width: 1280px) {
   .titleBlock {
     padding: 35px 0;
+  }
+
+  .title {
+    gap: 35px;
   }
 }
