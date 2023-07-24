@@ -3,6 +3,7 @@ import Link from "next/link";
 import classNames from "classnames";
 
 import s from "./Button.module.scss";
+import Skeleton from "@/components/common/Skeleton/Skeleton";
 
 interface ButtonProps extends ComponentProps<"button"> {
   variant?: "contained" | "outlined" | "outlined-secondary";
@@ -18,6 +19,10 @@ interface ButtonProps extends ComponentProps<"button"> {
   className?: string;
   children?: React.ReactNode;
   buttonProps?: ComponentProps<"button">;
+  loading?: {
+    status: boolean;
+    className: string;
+  };
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,6 +33,7 @@ const Button: React.FC<ButtonProps> = ({
   hover = true,
   href,
   className,
+  loading,
   children,
   ...buttonProps
 }) => {
@@ -45,6 +51,8 @@ const Button: React.FC<ButtonProps> = ({
     [s.square]: !rounded,
     [s.hover]: hover,
   });
+
+  if (loading?.status) return <Skeleton className={loading.className} />;
 
   if (
     textVariant === "capitalize-first-latter" &&

@@ -1,12 +1,11 @@
 "use client";
 
+import React from "react";
 import { useSelector } from "react-redux";
 
-import FreeDeliveryInfo from "@/app/cart/_components/FreeDeliveryInfo/FreeDeliveryInfo";
 import Promocode from "./_components/Promocode/Promocode";
 import Button from "@/components/common/Button/Button";
 import ProductInCartList from "@/app/cart/_components/ProductInCartList/ProductInCartList";
-import Loading from "@/components/common/Loading/Loading";
 import EmptyCart from "@/app/cart/_components/EmptyCart/EmptyCart";
 import { useTotalPrice } from "@/hooks/useTotalPrice";
 import { RootState } from "@/store/store";
@@ -14,15 +13,26 @@ import { RootState } from "@/store/store";
 import s from "./page.module.scss";
 
 const Cart = () => {
-  const { totalPriceWithDiscount } = useTotalPrice();
+  const { totalPriceWithDiscount, isDeliveryFree, priceToFreeDelivery } =
+    useTotalPrice();
   const { status, data } = useSelector((state: RootState) => state.cart);
 
-  if (status === "loading/all") return <Loading />;
-  if (!data.length) return <EmptyCart />;
+  // if (status === "loading/all") return <Loading />;
+  if (!data.length && status !== "loading/all") return <EmptyCart />;
 
   return (
     <section className={s.cart}>
-      <FreeDeliveryInfo />
+      <Button
+        size="large"
+        variant="contained"
+        href="/" // TODO: в будущем ссылка на "/about/delivery"
+        textVariant="capitalize-first-latter"
+        loading={{ status: status === "loading/all", className: s.loading }}
+      >
+        {isDeliveryFree && "Ура! Бесплатная доставка 🥳"}
+        {!isDeliveryFree &&
+          `До бесплатной доставки не хватает ${priceToFreeDelivery} рублей`}
+      </Button>
       <ProductInCartList />
       <Promocode />
       <div className={s.totalPriceBlock}>

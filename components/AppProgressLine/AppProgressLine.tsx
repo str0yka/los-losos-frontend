@@ -1,4 +1,5 @@
 import React from "react";
+
 import ProgressLine from "@/components/common/ProgressLine/ProgressLine";
 
 const AppProgressLine = () => {

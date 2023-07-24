@@ -28,6 +28,7 @@ interface RootLayoutInterface {
 // 19. Вместо <span class="visually-hidden"></... сделать отдельный компонент
 // 20. Сделать хук useAppDispatch
 // 21. EmptyCart, NotFoundPage, Loading плохо отображаются на маленьких телефонах
+// 22. В компоненте Button вместо variant="outlined-secondary" сделать variant="disabled" или просто добавить свойсто disabled
 
 const RootLayout: React.FC<RootLayoutInterface> = ({ children }) => {
   return (

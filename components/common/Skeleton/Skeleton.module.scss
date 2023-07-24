@@ -1,0 +1,31 @@
+.skeleton {
+  position: relative;
+
+  background-color: var(--secondaryColorLighten);
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--secondaryColorSkeleton) 25%, var(--secondaryColorSkeleton) 75%, rgba(0, 0, 0, 0) 100%);
+    animation: skeletonAnimate 1.5s infinite;
+  }
+}
+
+@keyframes skeletonAnimate {
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}

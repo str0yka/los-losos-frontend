@@ -3,9 +3,7 @@ import { usePathname } from "next/navigation";
 
 import { ProgressProps } from "./../ProgressLine";
 
-export const useProgressLine = (
-  buttons: Array<{ path: string; name: string }>
-) => {
+export const useProgressLine = (buttons: { path: string; name: string }[]) => {
   const pathname = usePathname();
   const [progressButtonsProps, setProgressButtonsProps] = useState<
     null | ProgressProps[]

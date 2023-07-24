@@ -24,7 +24,9 @@ export const useTotalPrice = () => {
 
   const totalPriceWithDiscount = totalPrice - promocodeDiscount;
 
-  const isDeliveryFree = totalPrice > PRICE_FOR_FREE_DELIVERY;
+  const priceToFreeDelivery = PRICE_FOR_FREE_DELIVERY - totalPrice;
+
+  const isDeliveryFree = priceToFreeDelivery <= 0;
   const totalPriceWithDelivery = isDeliveryFree
     ? totalPriceWithDiscount
     : totalPriceWithDiscount + Number(DELIVERY_PRICE);
@@ -34,5 +36,7 @@ export const useTotalPrice = () => {
     totalPriceWithDiscount: Math.floor(totalPriceWithDiscount),
     promocodeDiscount: Math.floor(promocodeDiscount),
     totalPriceWithDelivery,
+    priceToFreeDelivery,
+    isDeliveryFree,
   };
 };
