@@ -5,13 +5,22 @@ import { appFetch } from "@/http";
 export const fetchCheckPromocode = createAsyncThunk(
   "promocode/fetchCheckPromocode",
   async (code: string | undefined) => {
-    if (!code) return;
+    try {
+      if (!code) return;
 
-    const response = appFetch.post("/promocode/check", {
-      body: { code },
-    });
+      const response = await appFetch.post("/promocode/check", {
+        body: { code },
+      });
 
-    return response;
+      if (!response.id) {
+        alert("Такого промокода не существует");
+        throw new Error("Неверный промокод");
+      }
+
+      return response;
+    } catch (error) {
+      throw new Error("Ошибка при проверке промокода");
+    }
   }
 );
 
@@ -35,7 +44,6 @@ const promocodeSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchCheckPromocode.fulfilled, (state, { payload }) => {
-        if (!payload.id) throw new Error("Неверный промокод");
         state.promocode = payload;
         state.status = "finished";
       })

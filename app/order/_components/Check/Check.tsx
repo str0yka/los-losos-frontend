@@ -3,6 +3,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import Skeleton from "@/components/common/Skeleton/Skeleton";
 import { useTotalPrice } from "@/hooks/useTotalPrice";
 import { DELIVERY_PRICE, PRICE_FOR_FREE_DELIVERY } from "@/utils";
 import { RootState } from "@/store/store";
@@ -10,7 +11,7 @@ import { RootState } from "@/store/store";
 import s from "./Check.module.scss";
 
 const Check = () => {
-  const productsInCart = useSelector((state: RootState) => state.cart.data);
+  const { data, status } = useSelector((state: RootState) => state.cart);
   const promocode = useSelector(
     (state: RootState) => state.promocode.promocode
   );
@@ -18,11 +19,13 @@ const Check = () => {
     useTotalPrice();
   const isDeliveryFree = totalPrice > PRICE_FOR_FREE_DELIVERY;
 
+  if (status === "loading/all") return <Skeleton className={s.skeleton} />;
+
   return (
     <section className={s.check}>
       <h5 className={s.title}>Состав заказа</h5>
       <ul className={s.list}>
-        {productsInCart.map(({ product, count }) => (
+        {data.map(({ product, count }) => (
           <li key={product.id} className={s.item}>
             <div className={s.itemInfo}>
               <h6 className={s.itemTitle}>{product.title}</h6>

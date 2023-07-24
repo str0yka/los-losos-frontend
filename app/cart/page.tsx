@@ -17,7 +17,6 @@ const Cart = () => {
     useTotalPrice();
   const { status, data } = useSelector((state: RootState) => state.cart);
 
-  // if (status === "loading/all") return <Loading />;
   if (!data.length && status !== "loading/all") return <EmptyCart />;
 
   return (
@@ -27,11 +26,14 @@ const Cart = () => {
         variant="contained"
         href="/" // TODO: в будущем ссылка на "/about/delivery"
         textVariant="capitalize-first-latter"
-        loading={{ status: status === "loading/all", className: s.loading }}
+        loading={{
+          status: status === "loading/all",
+          className: s.skeletonButton,
+        }}
       >
-        {isDeliveryFree && "Ура! Бесплатная доставка 🥳"}
-        {!isDeliveryFree &&
-          `До бесплатной доставки не хватает ${priceToFreeDelivery} рублей`}
+        {isDeliveryFree
+          ? "Ура! Бесплатная доставка 🥳"
+          : `До бесплатной доставки не хватает ${priceToFreeDelivery} рублей`}
       </Button>
       <ProductInCartList />
       <Promocode />
@@ -46,6 +48,10 @@ const Cart = () => {
         size="large"
         textVariant="capitalize-first-latter"
         href="/order"
+        loading={{
+          status: status === "loading/all",
+          className: s.skeletonButton,
+        }}
       >
         Оформить
         <svg

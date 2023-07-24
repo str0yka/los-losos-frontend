@@ -22,7 +22,7 @@ const ProgressLineItem: React.FC<ProgressLineItemProps> = ({
   ) : (
     <Button
       key={path}
-      variant="outlined-secondary"
+      disabled
       textVariant="capitalize-first-latter"
       hover={false}
     >

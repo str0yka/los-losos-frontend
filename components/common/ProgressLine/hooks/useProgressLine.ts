@@ -25,7 +25,5 @@ export const useProgressLine = (buttons: { path: string; name: string }[]) => {
     );
   }, [pathname]);
 
-  // TODO: тут надо проверить, если возвращается null, то вернуть скелетон
-
   return progressButtonsProps;
 };

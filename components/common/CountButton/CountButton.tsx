@@ -1,9 +1,11 @@
 "use client";
 
 import * as React from "react";
-import classes from "./CountButton.module.scss";
 
+import Skeleton from "@/components/common/Skeleton/Skeleton";
 import { useHandleCart } from "./hooks/useHandleCart";
+
+import classes from "./CountButton.module.scss";
 
 interface CountButtonProps {
   id: number;

@@ -1,3 +1,17 @@
+div.skeletonButton {
+  height: 36px;
+
+  background-color: var(--secondaryColorTransparent);
+}
+
+.active {
+  height: 108px;
+}
+
+.nonactive {
+  height: 36px;
+}
+
 .CountButton {
   position: relative;
 

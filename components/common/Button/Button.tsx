@@ -2,11 +2,12 @@ import React, { ComponentProps } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 
-import s from "./Button.module.scss";
 import Skeleton from "@/components/common/Skeleton/Skeleton";
 
+import s from "./Button.module.scss";
+
 interface ButtonProps extends ComponentProps<"button"> {
-  variant?: "contained" | "outlined" | "outlined-secondary";
+  variant?: "contained" | "outlined";
   textVariant?:
     | "uppercase"
     | "lowercase"
@@ -21,7 +22,7 @@ interface ButtonProps extends ComponentProps<"button"> {
   buttonProps?: ComponentProps<"button">;
   loading?: {
     status: boolean;
-    className: string;
+    className?: string;
   };
 }
 
@@ -29,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
   variant = "outlined",
   textVariant = "uppercase",
   size = "small",
+  disabled,
   rounded = false,
   hover = true,
   href,
@@ -40,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
   const classes = classNames(s.button, className, {
     [s.contained]: variant === "contained",
     [s.outlined]: variant === "outlined",
-    [s.outlinedSecondary]: variant === "outlined-secondary",
+    [s.disabled]: disabled,
     [s.uppercase]: textVariant === "uppercase",
     [s.lowercase]: textVariant === "lowercase",
     [s.capitalize]: textVariant === "capitalize",
@@ -63,12 +65,12 @@ const Button: React.FC<ButtonProps> = ({
 
   return href ? (
     <Link href={href}>
-      <button className={classes} {...buttonProps}>
+      <button className={classes} {...buttonProps} disabled={disabled}>
         {children}
       </button>
     </Link>
   ) : (
-    <button className={classes} {...buttonProps}>
+    <button className={classes} {...buttonProps} disabled={disabled}>
       {children}
     </button>
   );

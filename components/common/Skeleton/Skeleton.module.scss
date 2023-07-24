@@ -2,9 +2,13 @@
   position: relative;
 
   background-color: var(--secondaryColorLighten);
-  border-radius: 15px;
+  border-radius: 10px;
 
   overflow: hidden;
+
+  * {
+    display: none;
+  }
 
   &::before {
     content: '';

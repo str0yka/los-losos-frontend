@@ -12,7 +12,6 @@ import s from "./Promocode.module.scss";
 const Promocode = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { promocode, status } = useSelector(
-    // TODO: вытащил статус, чтобы в будущем сделать для компонента Button скелетон и навесить ему
     (state: RootState) => state.promocode
   );
   const [code, setCode] = useState(promocode?.code || "");
@@ -50,7 +49,11 @@ const Promocode = () => {
           onChange={(event) => setCode(event.target.value)}
           onKeyDown={(event) => event.key === "Enter" && onConfirmPromocode()}
         />
-        <Button variant="contained" onClick={onConfirmPromocode}>
+        <Button
+          variant="contained"
+          onClick={onConfirmPromocode}
+          disabled={status === "loading"}
+        >
           Применить
         </Button>
       </div>

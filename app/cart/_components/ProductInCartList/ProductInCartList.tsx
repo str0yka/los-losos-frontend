@@ -2,17 +2,19 @@
 
 import { useSelector } from "react-redux";
 
-import { RootState } from "@/store/store";
 import ProductItem from "@/app/_components/ProductItem/ProductItem";
+import Skeleton from "@/components/common/Skeleton/Skeleton";
+import { RootState } from "@/store/store";
 
 import s from "./ProductInCartList.module.scss";
 
 const ProductInCartList = () => {
-  const productsInCart = useSelector((state: RootState) => state.cart.data);
+  const { status, data } = useSelector((state: RootState) => state.cart);
 
   return (
     <section className={s.list}>
-      {productsInCart.map(({ product }) => (
+      {status === "loading/all" && <Skeleton />}
+      {data.map(({ product }) => (
         <ProductItem
           key={product.id}
           product={product}

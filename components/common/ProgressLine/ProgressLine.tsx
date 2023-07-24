@@ -7,6 +7,7 @@ import ProgressLineButton from "@/components/common/ProgressLine/ProgressLineIte
 import { useProgressLine } from "./hooks";
 
 import s from "./ProgressLine.module.scss";
+import ProgressLineSkeleton from "@/components/common/ProgressLine/ProgressLineSkeleton/ProgressLineSkeleton";
 
 export interface ProgressProps {
   path: string;
@@ -22,6 +23,8 @@ const ProgressLine: React.FC<ProgressLineProps> = ({ progress }) => {
   const progressItems = useProgressLine(progress);
   const progressLineClassName = (currentOrPrevious: boolean) =>
     classes({ [s.progressLine]: true, [s.previous]: currentOrPrevious });
+
+  if (!progressItems) return <ProgressLineSkeleton length={progress.length} />;
 
   return (
     <div className={s.header}>

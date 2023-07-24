@@ -8,7 +8,6 @@ import CategoryList from "@/app/_components/CategoryList/CategoryList";
 import { API_URL } from "@/utils/consts";
 
 import { CategoryItem } from "@/app/index";
-import { appFetch } from "@/http";
 
 export const metadata: Metadata = {
   title: "Доставка | Лось-Лосось",
